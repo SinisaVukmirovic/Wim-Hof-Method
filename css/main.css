@@ -11,3 +11,7 @@ form {
     padding: 2rem;
     background-color: #999;
 }
+
+form button[type='submit'] {
+    margin: 2rem auto 0;
+}
