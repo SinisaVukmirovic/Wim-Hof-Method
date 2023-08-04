@@ -5,8 +5,7 @@ import {
     recoveryTimeInput 
 } from './DOMelements.js';
 
-export { settingsValues };
-let settingsValues = null;
+let settingsValues = {};
 
 function getSettingsValues() {
     settingsValues = {
@@ -17,4 +16,5 @@ function getSettingsValues() {
     }
 }
 
+export { settingsValues };
 export default getSettingsValues;
