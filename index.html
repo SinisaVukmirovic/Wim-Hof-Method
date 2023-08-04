@@ -11,13 +11,18 @@
 
     <form>
         <label for="">Number of breaths in round</label>
-        <input type="range" min="20" max="50" step="10">
+        <input type="range" min="20" max="50" step="10" value="30" data-breaths-number>
+        <br>
         <label for="">Breathing pace</label>
-        <input type="range" min="2" max="6">
+        <input type="range" min="2" max="6" value="4" data-breathing-pace>
+        <br>
         <label for="">Number of rounds</label>
-        <input type="range" min="2" max="5">
+        <input type="range" min="2" max="5" value="3"  data-rounds-number>
+        <br>
         <label for="">Recovery time</label>
-        <input type="range" min="10" max="60" step="5">
+        <input type="range" min="10" max="60" step="5" value="15" data-recovery-time>
+
+        <button type="submit">Save</button>
     </form>
     
 </body>
