@@ -6,8 +6,11 @@ const roundsNumberInput = settingsForm.querySelector('[data-rounds-number]');
 const recoveryTimeInput = settingsForm.querySelector('[data-recovery-time]');
 
 const startBtn = document.querySelector('[data-start-btn]');
+const stopBtn = document.querySelector('[data-stop-btn]');
 
 const breathNumberDisplay = document.querySelector('[data-breath-number]');
+const infoDisplay = document.querySelector('[data-info]');
+const breathHeldDisplay = document.querySelector('[data-breath-held]');
 
 // const saveBtn = settingsForm.querySelector('button');
 
@@ -18,5 +21,8 @@ export {
     roundsNumberInput, 
     recoveryTimeInput, 
     startBtn,
-    breathNumberDisplay
+    stopBtn,
+    breathNumberDisplay,
+    infoDisplay,
+    breathHeldDisplay
 };

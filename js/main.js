@@ -1,4 +1,10 @@
-import { settingsForm, startBtn, breathNumberDisplay } from './DOMelements.js';
+import { 
+    settingsForm, 
+    startBtn, 
+    stopBtn, 
+    infoDisplay, 
+    breathNumberDisplay, 
+    breathHeldDisplay } from './DOMelements.js';
 // import getSettingsValues from './getSettingsValue.js';
 import getSettingsValues, { settingsValues } from './getSettingsValue.js';
 
@@ -16,17 +22,33 @@ settingsForm.addEventListener('submit', e => {
 
 startBtn.addEventListener('click', startApp);
 
-let breathNumber = 0;
-breathNumberDisplay.innerHTML = `${breathNumber}`;
-
 function startApp() {
+    let breathNumber = 0;
+    infoDisplay.innerHTML = 'Number of Breaths';
+    breathNumberDisplay.innerHTML = `${breathNumber}`;
     const intervalBreathsCounter = setInterval(() => {
         breathNumber++;
         breathNumberDisplay.innerHTML = `${breathNumber}`;
 
         if (breathNumber == 5) {
             clearInterval(intervalBreathsCounter);
+            endRoundAndBreathIn();
         };
     }, (settingsValues.breathingPace) * 100);
+}
 
+function endRoundAndBreathIn() {
+    let secondsCounter = 0;
+
+    infoDisplay.innerHTML = 'Breath in and hold your breath!';
+
+    const intervalSecondsCounter = setInterval(() => {
+        secondsCounter++;
+        console.log(secondsCounter);
+    }, 1000);
+
+    stopBtn.addEventListener('click', () => {
+        clearInterval(intervalSecondsCounter);
+        breathHeldDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
+    });
 }
