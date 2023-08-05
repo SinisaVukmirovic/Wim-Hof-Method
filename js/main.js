@@ -1,4 +1,4 @@
-import { settingsForm } from './DOMelements.js';
+import { settingsForm, startBtn } from './DOMelements.js';
 // import getSettingsValues from './getSettingsValue.js';
 import getSettingsValues, { settingsValues } from './getSettingsValue.js';
 
@@ -13,3 +13,9 @@ settingsForm.addEventListener('submit', e => {
     getSettingsValues();            
     console.log(settingsValues)
 });
+
+startBtn.addEventListener('click', startApp);
+
+function startApp() {
+    
+}
