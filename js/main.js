@@ -1,4 +1,4 @@
-import { settingsForm, startBtn } from './DOMelements.js';
+import { settingsForm, startBtn, breathNumberDisplay } from './DOMelements.js';
 // import getSettingsValues from './getSettingsValue.js';
 import getSettingsValues, { settingsValues } from './getSettingsValue.js';
 
@@ -16,6 +16,17 @@ settingsForm.addEventListener('submit', e => {
 
 startBtn.addEventListener('click', startApp);
 
+let breathNumber = 0;
+breathNumberDisplay.innerHTML = `${breathNumber}`;
+
 function startApp() {
-    
+    const intervalBreathsCounter = setInterval(() => {
+        breathNumber++;
+        breathNumberDisplay.innerHTML = `${breathNumber}`;
+
+        if (breathNumber == 5) {
+            clearInterval(intervalBreathsCounter);
+        };
+    }, (settingsValues.breathingPace) * 100);
+
 }
