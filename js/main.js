@@ -4,8 +4,9 @@ import {
     stopBtn, 
     infoDisplay, 
     breathNumberDisplay, 
-    breathHeldDisplay } from './DOMelements.js';
-// import getSettingsValues from './getSettingsValue.js';
+    breathHeldDisplay 
+} from './DOMelements.js';
+
 import getSettingsValues, { settingsValues } from './getSettingsValue.js';
 
 console.log(settingsValues);
@@ -44,7 +45,7 @@ function endRoundAndBreathIn() {
 
     const intervalSecondsCounter = setInterval(() => {
         secondsCounter++;
-        console.log(secondsCounter);
+        breathHeldDisplay.innerHTML = `${secondsCounter}`;
     }, 1000);
 
     stopBtn.addEventListener('click', () => {

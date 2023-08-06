@@ -5,7 +5,12 @@ import {
     recoveryTimeInput 
 } from './DOMelements.js';
 
-let settingsValues = {};
+let settingsValues = {
+    numberOfBreaths: null,
+    breathingPace: null,
+    numberOfRounds: null,
+    recoveryTime: null
+};
 
 function getSettingsValues() {
     settingsValues = {
