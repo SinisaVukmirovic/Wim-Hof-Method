@@ -31,7 +31,7 @@ function startApp() {
         breathNumber++;
         breathNumberDisplay.innerHTML = `${breathNumber}`;
 
-        if (breathNumber == 5) {
+        if (breathNumber == settingsValues.numberOfBreaths) {
             clearInterval(intervalBreathsCounter);
             endRoundAndBreathIn();
         };
@@ -51,5 +51,25 @@ function endRoundAndBreathIn() {
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
         breathHeldDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
+
+        retentionTide();
     });
+}
+
+function retentionTide() {
+    let secondsCounter = 0;
+
+    const intervalRetentionTime = setInterval(() => {
+        secondsCounter++;
+        infoDisplay.innerHTML = `${secondsCounter}`;
+
+        if (settingsValues.recoveryTime == secondsCounter) {
+            clearInterval(intervalRetentionTime);
+            infoDisplay.innerHTML = 'Next round starting!'
+            setTimeout(() => {
+                startApp();
+                breathHeldDisplay.innerHTML = ``;
+            }, 100);
+        }
+    }, 1000);
 }
