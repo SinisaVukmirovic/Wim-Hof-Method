@@ -25,15 +25,15 @@ settingsForm.addEventListener('submit', e => {
 
 startBtn.addEventListener('click', startApp);
 
-let round = 0;
+let round = 1;
 
 function startApp() {
-    round++;
     if (round > settingsValues.numberOfRounds) {
         infoDisplay.innerHTML = `Breathing session over!`;
         return;
     }
     roundDisplay.innerHTML = `Round ${round}`;
+    round++;
 
     let breathNumber = settingsValues.numberOfBreaths;
 
@@ -53,7 +53,7 @@ function startApp() {
 
         if (breathNumber == 0) {
             clearInterval(intervalBreathsCounter);
-            infoDisplay.innerHTML = 'Hold breath as long as you can!';
+            // infoDisplay.innerHTML = 'Hold breath as long as you can!';
             numbersDisplay.innerHTML = ``;
             endRoundAndHoldBreath();
         };
@@ -61,7 +61,7 @@ function startApp() {
 }
 
 function endRoundAndHoldBreath() {
-    // infoDisplay.innerHTML = 'Hold breath as long as you can!';
+    infoDisplay.innerHTML = 'Hold breath as long as you can!';
     let secondsCounter = 0;
 
     const intervalSecondsCounter = setInterval(() => {
@@ -82,11 +82,11 @@ function endRoundAndHoldBreath() {
 
 function recoveryTime() {
     let secondsCounter = settingsValues.recoveryTime;
+    infoDisplay.innerHTML = 'Pause! Recovery time.';
 
     const intervalrecoveryTime = setInterval(() => {
         numbersDisplay.innerHTML = `${secondsCounter}`;
         secondsCounter--;
-        infoDisplay.innerHTML = 'Pause! Recovery time.';
 
         if (secondsCounter == 3) {
             infoDisplay.innerHTML = 'Next round coming up!';
