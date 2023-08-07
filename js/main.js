@@ -24,9 +24,14 @@ settingsForm.addEventListener('submit', e => {
 
 startBtn.addEventListener('click', startApp);
 
-let round = 1; 
+let round = 0; 
 
 function startApp() {
+    round++;
+    if (round > settingsValues.numberOfRounds) {
+        infoDisplay.innerHTML = `Breathing session over!`;
+        return;
+    }
     let breathNumber = settingsValues.numberOfBreaths;
     infoDisplay.innerHTML = `Breaths left in round ${round}`;
     numbersDisplay.innerHTML = `${breathNumber}`;
@@ -43,7 +48,7 @@ function startApp() {
             clearInterval(intervalBreathsCounter);
             endRoundAndHoldBreath();
         };
-    }, (settingsValues.breathingPace) * 100);
+    }, settingsValues.breathingPace * 100);
 }
 
 function endRoundAndHoldBreath() {
@@ -53,7 +58,7 @@ function endRoundAndHoldBreath() {
     const intervalSecondsCounter = setInterval(() => {
         secondsCounter++;
         numbersDisplay.innerHTML = `${secondsCounter}`;
-    }, 1000);
+    }, 100);
 
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
@@ -64,16 +69,17 @@ function endRoundAndHoldBreath() {
 }
 
 function recoveryTime() {
-    let secondsCounter = 0;
+    let secondsCounter = settingsValues.recoveryTime;
 
     const intervalrecoveryTime = setInterval(() => {
-        secondsCounter++;
+        secondsCounter--;
         infoDisplay.innerHTML = 'Pause. Recovery time.'
         numbersDisplay.innerHTML = `${secondsCounter}`;
 
-        if (settingsValues.recoveryTime == secondsCounter + 3) {
+        if (secondsCounter < 1) {
             clearInterval(intervalrecoveryTime);
-            infoDisplay.innerHTML = 'Next round starting!'
+            infoDisplay.innerHTML = 'Next round starting!';
+            
             setTimeout(() => {
                 // if (round > settingsValues.numberOfRounds) {
                 //     stopSessionDisplayResults();
@@ -81,7 +87,7 @@ function recoveryTime() {
                 // }
                 numbersDisplay.innerHTML = ``;
                 startApp();
-            }, 100);
+            }, 1000);
         }
-    }, 1000);
+    }, 100);
 }
