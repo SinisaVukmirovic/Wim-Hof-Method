@@ -10,17 +10,52 @@
 </head>
 <body>
 
-    <div class="app">
+    <main class="app">
+        <div class="settings">
+            <form>
+                <label for="">Number of breaths in round</label>
+                <input type="range" min="20" max="50" step="10" value="30" data-breaths-number>
+                <br>
+                <label for="">Breathing pace</label>
+                <input type="range" min="2" max="6" value="4" data-breathing-pace>
+                <br>
+                <label for="">Number of rounds</label>
+                <input type="range" min="2" max="5" value="3"  data-rounds-number>
+                <br>
+                <label for="">Recovery time</label>
+                <input type="range" min="10" max="60" step="5" value="15" data-recovery-time>
+        
+                <button type="submit">Save</button>
+            </form>
+        </div>
+
+        <div class="display">
+            <p data-info>Wim Hof breathing method</p>
+            <p data-numbers></p>
+
+
+
+
+            <!-- <p data-info></p>
+            <p data-breath-number></p>
+            <p data-breath-held></p> -->
+    
+            <button data-start-btn>Start</button>
+            <button data-stop-btn>Stop</button>
+        </div>
+    </main>
+
+    <!-- <div class="app">
         <p data-info></p>
         <p data-breath-number></p>
         <p data-breath-held></p>
 
         <button data-start-btn>Start</button>
         <button data-stop-btn>Stop</button>
-    </div>
+    </div> -->
 
 
-    <form>
+    <!-- <form>
         <label for="">Number of breaths in round</label>
         <input type="range" min="20" max="50" step="10" value="30" data-breaths-number>
         <br>
@@ -34,7 +69,7 @@
         <input type="range" min="10" max="60" step="5" value="15" data-recovery-time>
 
         <button type="submit">Save</button>
-    </form>
+    </form> -->
     
 </body>
 </html>

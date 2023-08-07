@@ -8,9 +8,10 @@ const recoveryTimeInput = settingsForm.querySelector('[data-recovery-time]');
 const startBtn = document.querySelector('[data-start-btn]');
 const stopBtn = document.querySelector('[data-stop-btn]');
 
-const breathNumberDisplay = document.querySelector('[data-breath-number]');
+// const breathNumberDisplay = document.querySelector('[data-breath-number]');
 const infoDisplay = document.querySelector('[data-info]');
-const breathHeldDisplay = document.querySelector('[data-breath-held]');
+const numbersDisplay = document.querySelector('[data-numbers]');
+// const breathHeldDisplay = document.querySelector('[data-breath-held]');
 
 // const saveBtn = settingsForm.querySelector('button');
 
@@ -22,7 +23,8 @@ export {
     recoveryTimeInput, 
     startBtn,
     stopBtn,
-    breathNumberDisplay,
+    // breathNumberDisplay,
     infoDisplay,
-    breathHeldDisplay
+    numbersDisplay
+    // breathHeldDisplay
 };

@@ -1,22 +1,37 @@
 body {
     background-color: #222;
+    color: #eee;
     font-family: sans-serif;
     font-size: 20px;
 }
 
+.app {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5rem;
+    padding: 5rem;
+}
+
 form {
     display: grid;
-    max-width: 500px;
+    /* max-width: 500px;
     margin: 5rem auto;
     padding: 2rem;
-    background-color: #999;
+    background-color: #999; */
 }
 
 form button[type='submit'] {
     margin: 2rem auto 0;
 }
 
-.app {
+/* .app {
     padding: 2rem;
     background-color: teal;
+} */
+
+@media screen and (min-width: 1024px) {
+    .app {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
