@@ -3,6 +3,7 @@ import {
     startBtn, 
     stopBtn, 
     infoDisplay, 
+    roundDisplay,
     numbersDisplay
     // breathNumberDisplay, 
     // breathHeldDisplay 
@@ -24,7 +25,7 @@ settingsForm.addEventListener('submit', e => {
 
 startBtn.addEventListener('click', startApp);
 
-let round = 0; 
+let round = 0;
 
 function startApp() {
     round++;
@@ -32,8 +33,11 @@ function startApp() {
         infoDisplay.innerHTML = `Breathing session over!`;
         return;
     }
+    roundDisplay.innerHTML = `Round ${round}`;
+
     let breathNumber = settingsValues.numberOfBreaths;
-    infoDisplay.innerHTML = `Breaths left in round ${round}`;
+
+    infoDisplay.innerHTML = `Breaths left`;
     numbersDisplay.innerHTML = `${breathNumber}`;
 
     const intervalBreathsCounter = setInterval(() => {
@@ -41,30 +45,38 @@ function startApp() {
         numbersDisplay.innerHTML = `${breathNumber}`;
 
         if (breathNumber == 3) {
+            infoDisplay.innerHTML = 'Final breath coming up!';
+        }
+        if (breathNumber == 1) {
             infoDisplay.innerHTML = 'Breath in deep and hold breath!';
         }
 
         if (breathNumber == 0) {
             clearInterval(intervalBreathsCounter);
+            infoDisplay.innerHTML = 'Hold breath as long as you can!';
+            numbersDisplay.innerHTML = ``;
             endRoundAndHoldBreath();
         };
-    }, settingsValues.breathingPace * 100);
+    }, settingsValues.breathingPace * 300);
 }
 
 function endRoundAndHoldBreath() {
-    infoDisplay.innerHTML = 'Hold breath as long as you can!';
+    // infoDisplay.innerHTML = 'Hold breath as long as you can!';
     let secondsCounter = 0;
 
     const intervalSecondsCounter = setInterval(() => {
         secondsCounter++;
         numbersDisplay.innerHTML = `${secondsCounter}`;
-    }, 100);
+    }, 300);
 
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
         infoDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
+        numbersDisplay.innerHTML = `${secondsCounter}`;
 
-        recoveryTime();
+        setTimeout(() => {
+            recoveryTime();
+        }, 2000);
     });
 }
 
@@ -72,22 +84,27 @@ function recoveryTime() {
     let secondsCounter = settingsValues.recoveryTime;
 
     const intervalrecoveryTime = setInterval(() => {
-        secondsCounter--;
-        infoDisplay.innerHTML = 'Pause. Recovery time.'
         numbersDisplay.innerHTML = `${secondsCounter}`;
+        secondsCounter--;
+        infoDisplay.innerHTML = 'Pause! Recovery time.';
 
-        if (secondsCounter < 1) {
+        if (secondsCounter == 3) {
+            infoDisplay.innerHTML = 'Next round coming up!';
+        }
+
+        if (secondsCounter == 0) {
             clearInterval(intervalrecoveryTime);
-            infoDisplay.innerHTML = 'Next round starting!';
+            // infoDisplay.innerHTML = 'Next round starting!';
+            numbersDisplay.innerHTML = ``;
             
             setTimeout(() => {
                 // if (round > settingsValues.numberOfRounds) {
-                //     stopSessionDisplayResults();
-                //     return;
-                // }
-                numbersDisplay.innerHTML = ``;
+                    //     stopSessionDisplayResults();
+                    //     return;
+                    // }
+                // numbersDisplay.innerHTML = ``;
                 startApp();
             }, 1000);
         }
-    }, 100);
+    }, 300);
 }
