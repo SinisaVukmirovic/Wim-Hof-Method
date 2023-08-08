@@ -8,67 +8,102 @@ body {
     background-color: #222;
     color: #eee;
     font-family: sans-serif;
-    font-size: 20px;
+    display: grid;
+    min-height: 100dvh;
 }
 
-.app {
+header {
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
     display: grid;
     place-content: center;
     grid-template-columns: 1fr;
     grid-gap: 5rem;
+    padding: 0 2rem;
 }
-    .app > div {
-        border: 1px solid yellow;
+
+main > section {
+    background-color: teal;
+    display: grid;
+    place-content: center;
+    padding: 1rem;
+}
+
+.controls {
+    background-color: red;
+    height: 2rem;
+
+    & button {
+        position: absolute;
+        transform: translateX(-50%);
     }
+    
+    & button[data-start-btn] {
+        /* background-color: lime; */
+        /* z-index: 2; */
+    }
+}
 
 
-input, label {
+.settings h2 {
+    text-align: center;
+}
+
+/* form {
+    width: 80%;
+    margin: 0 auto;
+} */
+
+/* input, label {
     display: block;
     width: 100%;
-}
+} */
 
 .display {
-    display: grid;
+    text-align: center;
+    /* display: grid;
     grid-template-rows: 1fr 1fr 2fr 3fr;
     place-items: center;
-    text-align: center;
+    text-align: center; */
     /* min-height: 70vh; */
 }
 
 .numbers-display {
-    font-size: 5rem;
+    /* font-size: 5rem; */
 }
 
 .controls {
-    display: grid;
+    /* display: grid;
     place-items: center;
     height: 10rem;
     width: 100%;
-    background-color: red;
+    background-color: red; */
 }
 
 .controls > button {
-    outline: none;
+    /* outline: none;
     border: none;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    width: 10rem;
+    position: absolute; */
+    /* width: 10rem;
     height: 10rem;
     aspect-ratio: 1 / 1;
-    border-radius: 100%;
+    border-radius: 100%; */
 }
 
 .settings {
-    display: grid;
-    place-items: center;
+    /* display: grid; */
+    /* place-items: center; */
 }
     .settings > div {
-        display: grid;
+        /* display: grid; */
     }
 
 form {
-    width: 80%;
-    margin: 2rem auto;
+    /* width: 80%;
+    margin: 2rem auto; */
     /* display: grid; */
     /* max-width: 500px;
     margin: 5rem auto;
@@ -77,7 +112,7 @@ form {
 }
 
 form button[type='submit'] {
-    margin: 2rem auto 0;
+    /* margin: 2rem auto 0; */
 }
 
 /* .app {
@@ -85,9 +120,20 @@ form button[type='submit'] {
     background-color: teal;
 } */
 
-@media screen and (min-width: 1024px) {
-    .app {
+footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+
+    & a {
+        text-decoration: none;
+        color: teal;
+    }
+}
+
+/* @media screen and (min-width: 1024px) {
+    main {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
-}
+} */
