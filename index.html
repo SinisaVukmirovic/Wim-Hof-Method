@@ -19,14 +19,15 @@
                 <p data-round>Round 2</p>
             </div>
             <div class="info-display">
-                <p data-info>Wim Hof breathing method</p>
+                <!-- <p data-info>Wim Hof breathing method</p> -->
+                <p data-info>Breaths left</p>
             </div>
             <div class="numbers-display">
                 <p data-numbers>23</p>
             </div>
             <div class="controls">
-                <button data-start-btn>Start</button>
-                <button data-stop-btn>Stop</button>
+                <button data-stop-btn>Stop<br> Holding</button>
+                <button data-start-btn>Start<br> Session</button>
             </div>
         </section>
 
@@ -48,8 +49,10 @@
                 <div>
                     <label for="">Recovery time</label>
                     <input type="range" min="10" max="60" step="5" value="15" data-recovery-time>
-                </div>        
-                <button type="submit">Save</button>
+                </div>
+                <div>
+                    <button type="submit">Save</button>
+                </div>     
             </form>
         </section>
     </main>
