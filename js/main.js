@@ -28,10 +28,10 @@ startBtn.addEventListener('click', startApp);
 let round = 1;
 
 function startApp() {
-    if (round > settingsValues.numberOfRounds) {
-        infoDisplay.innerHTML = `Breathing session over!`;
-        return;
-    }
+    // if (round > settingsValues.numberOfRounds) {
+    //     infoDisplay.innerHTML = `Breathing session over!`;
+    //     return;
+    // }
     roundDisplay.innerHTML = `Round ${round}`;
     round++;
 
@@ -81,6 +81,15 @@ function endRoundAndHoldBreath() {
 }
 
 function recoveryTime() {
+    if (round > settingsValues.numberOfRounds) {
+        infoDisplay.innerHTML = `Breathing session over!`;
+        numbersDisplay.innerHTML = ``;
+        // TO DO
+        // displayResults()
+        // To DO
+        return;
+    }
+
     let secondsCounter = settingsValues.recoveryTime;
     infoDisplay.innerHTML = 'Pause! Recovery time.';
 
@@ -103,6 +112,12 @@ function recoveryTime() {
                     //     return;
                     // }
                 // numbersDisplay.innerHTML = ``;
+
+                // if (round > settingsValues.numberOfRounds) {
+                //     infoDisplay.innerHTML = `Breathing session over!`;
+                //     return;
+                // }
+
                 startApp();
             }, 1000);
         }
