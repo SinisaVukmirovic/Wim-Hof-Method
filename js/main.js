@@ -1,3 +1,5 @@
+import './rangeIndicatorsDisplay.js';
+
 import { 
     settingsForm, 
     startBtn, 
@@ -166,3 +168,26 @@ function recoveryTime() {
         }
     }, 300);
 }
+
+// function populateIndicators() {
+//     const indicatorsValues = [20, 30, 40, 50];
+//     const ulElem = document.createElement('ul');
+//     indicatorsValues.forEach(ind => {
+//         const liElem = document.createElement('li');
+//         liElem.innerHTML = ind;
+//         ulElem.classList.add('indicators');
+//         ulElem.append(liElem);
+//         document.querySelector('.settings form div').append(ulElem);
+//     })
+// }
+// populateIndicators()
+
+
+
+
+
+
+
+
+
+
