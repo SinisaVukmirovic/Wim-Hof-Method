@@ -26,6 +26,7 @@ settingsForm.addEventListener('submit', e => {
 startBtn.addEventListener('click', startApp);
 
 let round = 1;
+// let results = [];
 
 function startApp() {
     // if (round > settingsValues.numberOfRounds) {
@@ -45,29 +46,33 @@ function startApp() {
         breathNumber--;
         numbersDisplay.innerHTML = `${breathNumber}`;
 
-        if (breathNumber == 5) {
+        if (breathNumber == 4) {
             infoDisplay.innerHTML = 'Final breath coming up!';
         }
-        if (breathNumber == 3) {
+        if (breathNumber == 2) {
             infoDisplay.innerHTML = 'Breath in deep...';
         }
-        if (breathNumber == 2) {
+        if (breathNumber == 1) {
             infoDisplay.innerHTML = '...exhale...';
         }
-        if (breathNumber == 1) {
-            infoDisplay.innerHTML = '...and hold your breath.';
-        }
+        // if (breathNumber == 0) {
+            // infoDisplay.innerHTML = '...and hold your breath.';
+        // }
 
         if (breathNumber == 0) {
             clearInterval(intervalBreathsCounter);
+            infoDisplay.innerHTML = '...and hold your breath.';
             // infoDisplay.innerHTML = 'Hold breath as long as you can!';
             numbersDisplay.innerHTML = ``;
-            endRoundAndHoldBreath();
+
+            setTimeout(() => {
+                breathHolding();
+            }, 1500);
         };
-    }, settingsValues.breathingPace * 500);
+    }, settingsValues.breathingPace * 300);
 }
 
-function endRoundAndHoldBreath() {
+function breathHolding() {
     stopBtn.classList.add('show');
     infoDisplay.innerHTML = 'Hold breath as long as you can!';
     let secondsCounter = 0;
@@ -75,7 +80,7 @@ function endRoundAndHoldBreath() {
     const intervalSecondsCounter = setInterval(() => {
         secondsCounter++;
         numbersDisplay.innerHTML = `${secondsCounter}`;
-    }, 500);
+    }, 300);
 
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
@@ -83,21 +88,27 @@ function endRoundAndHoldBreath() {
         numbersDisplay.innerHTML = `${secondsCounter}`;
         stopBtn.classList.remove('show');
 
+        // results.push(`Breath held in round ${round}: ${secondsCounter}`);
+
         // setTimeout(() => {
         //     recoveryTime();
         // }, 2000);
         setTimeout(() => {
             retentionTime();
-        }, 2000);
+        }, 1500);
     });
 }
 
 function retentionTime() {
     let secondsCounter = 15;
-    infoDisplay.innerHTML = 'Breath in deep and hold breath!';
+    infoDisplay.innerHTML = 'Take a deep breath and hold!';
     const retentionInterval = setInterval(() => {
         secondsCounter--;
         numbersDisplay.innerHTML = `${secondsCounter}`;
+
+        if (secondsCounter == 1) {
+            infoDisplay.innerHTML = 'Exhale and rest for a while!';
+        }
 
         if (secondsCounter == 0) {
             clearInterval(retentionInterval);
@@ -105,9 +116,9 @@ function retentionTime() {
     
             setTimeout(() => {
                 recoveryTime();
-            }, 1000);
+            }, 500);
         }
-    }, 500);
+    }, 300);
 
 }
 
@@ -115,26 +126,27 @@ function recoveryTime() {
     if (round > settingsValues.numberOfRounds) {
         infoDisplay.innerHTML = `Breathing session over!`;
         numbersDisplay.innerHTML = ``;
+
         // TO DO
         // displayResults()
         // To DO
+
         return;
     }
 
     let secondsCounter = settingsValues.recoveryTime;
-    infoDisplay.innerHTML = 'Pause! Recovery time.';
+    infoDisplay.innerHTML = 'Pause and Recover';
 
     const intervalrecoveryTime = setInterval(() => {
         numbersDisplay.innerHTML = `${secondsCounter}`;
         secondsCounter--;
 
-        if (secondsCounter == 3) {
+        if (secondsCounter == 2) {
             infoDisplay.innerHTML = 'Next round coming up!';
         }
 
         if (secondsCounter == 0) {
             clearInterval(intervalrecoveryTime);
-            // infoDisplay.innerHTML = 'Next round starting!';
             numbersDisplay.innerHTML = ``;
             
             setTimeout(() => {
@@ -150,7 +162,7 @@ function recoveryTime() {
                 // }
 
                 startApp();
-            }, 1000);
+            }, 1500);
         }
-    }, 500);
+    }, 300);
 }
