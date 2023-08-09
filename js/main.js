@@ -11,10 +11,10 @@ import {
 
 import getSettingsValues, { settingsValues } from './getSettingsValue.js';
 
-console.log(settingsValues);
+// console.log(settingsValues);
         
 getSettingsValues();
-console.log(settingsValues);
+// console.log(settingsValues);
 
 settingsForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -32,6 +32,7 @@ function startApp() {
     //     infoDisplay.innerHTML = `Breathing session over!`;
     //     return;
     // }
+    startBtn.style.display = 'none';
     roundDisplay.innerHTML = `Round ${round}`;
     round++;
 
@@ -44,11 +45,17 @@ function startApp() {
         breathNumber--;
         numbersDisplay.innerHTML = `${breathNumber}`;
 
-        if (breathNumber == 3) {
+        if (breathNumber == 5) {
             infoDisplay.innerHTML = 'Final breath coming up!';
         }
+        if (breathNumber == 3) {
+            infoDisplay.innerHTML = 'Breath in deep...';
+        }
+        if (breathNumber == 2) {
+            infoDisplay.innerHTML = '...exhale...';
+        }
         if (breathNumber == 1) {
-            infoDisplay.innerHTML = 'Breath in deep and hold breath!';
+            infoDisplay.innerHTML = '...and hold your breath.';
         }
 
         if (breathNumber == 0) {
@@ -57,27 +64,51 @@ function startApp() {
             numbersDisplay.innerHTML = ``;
             endRoundAndHoldBreath();
         };
-    }, settingsValues.breathingPace * 300);
+    }, settingsValues.breathingPace * 500);
 }
 
 function endRoundAndHoldBreath() {
+    stopBtn.classList.add('show');
     infoDisplay.innerHTML = 'Hold breath as long as you can!';
     let secondsCounter = 0;
 
     const intervalSecondsCounter = setInterval(() => {
         secondsCounter++;
         numbersDisplay.innerHTML = `${secondsCounter}`;
-    }, 300);
+    }, 500);
 
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
         infoDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
         numbersDisplay.innerHTML = `${secondsCounter}`;
+        stopBtn.classList.remove('show');
 
+        // setTimeout(() => {
+        //     recoveryTime();
+        // }, 2000);
         setTimeout(() => {
-            recoveryTime();
+            retentionTime();
         }, 2000);
     });
+}
+
+function retentionTime() {
+    let secondsCounter = 15;
+    infoDisplay.innerHTML = 'Breath in deep and hold breath!';
+    const retentionInterval = setInterval(() => {
+        secondsCounter--;
+        numbersDisplay.innerHTML = `${secondsCounter}`;
+
+        if (secondsCounter == 0) {
+            clearInterval(retentionInterval);
+            numbersDisplay.innerHTML = ``;
+    
+            setTimeout(() => {
+                recoveryTime();
+            }, 1000);
+        }
+    }, 500);
+
 }
 
 function recoveryTime() {
@@ -121,5 +152,5 @@ function recoveryTime() {
                 startApp();
             }, 1000);
         }
-    }, 300);
+    }, 500);
 }

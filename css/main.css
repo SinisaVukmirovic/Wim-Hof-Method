@@ -14,8 +14,12 @@ body {
 
 header {
     text-align: center;
-    padding: 1rem;
+    padding: 1rem 0 0;
     background-color: teal;
+
+    & .title-accent {
+        letter-spacing: 5px;
+    }
 }
 
 main {
@@ -30,8 +34,8 @@ main > section {
     background-color: teal;
     /* display: grid;
     place-content: center; */
-    padding: 2rem 3rem;
-    border-radius: 2rem;
+    padding: 2rem 3rem 1rem;
+    border-radius: 1rem;
 
     & div {
         padding-top: 1rem;
@@ -43,11 +47,16 @@ main > section {
     text-align: center;
 }
 
+.rounds-display {
+    min-height: 1rem;
+}
+
 .info-display p {
     font-size: 1.5rem;
 }
 
 .numbers-display p {
+    min-height: 4rem;
     font-size: 4rem;
 }
 
@@ -69,10 +78,17 @@ main > section {
         font-size: 1.25rem;
     }
 
-    /* & button[data-start-btn] { */
-        /* background-color: lime; */
-        /* z-index: 2; */
-    /* } */
+    & button[data-stop-btn] {
+        /* opacity: 0; */
+        scale: 0;
+        transform-origin: center;
+        transition: all 500ms;
+    }
+
+    & button[data-stop-btn].show {        
+        /* opacity: 1; */
+        scale: 1;
+    }
 }
 
 /* settings panel */
@@ -84,7 +100,7 @@ main > section {
 .settings form {
     display: flex;
     flex-direction: column;
-    column-gap: 5rem;
+    padding-top: 1rem;
 }
 
 /* .settings form input,
