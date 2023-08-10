@@ -25,19 +25,23 @@ settingsForm.addEventListener('submit', e => {
     console.log(settingsValues)
 });
 
+let round = 0;
+// let round = 1;
+let results = [];
+console.log('initialization of results', results)
+
 startBtn.addEventListener('click', startApp);
 
-let round = 1;
-// let results = [];
 
 function startApp() {
     // if (round > settingsValues.numberOfRounds) {
     //     infoDisplay.innerHTML = `Breathing session over!`;
     //     return;
     // }
+    ++round;
     startBtn.style.display = 'none';
     roundDisplay.innerHTML = `Round ${round}`;
-    round++;
+    // round++;
 
     let breathNumber = settingsValues.numberOfBreaths;
 
@@ -72,6 +76,7 @@ function startApp() {
             }, 1500);
         };
     }, settingsValues.breathingPace * 300);
+    // round++;
 }
 
 function breathHolding() {
@@ -86,11 +91,21 @@ function breathHolding() {
 
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
+        
         infoDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
+        // console.log('before pushing in', round - 1, 'round results', results)
+        console.log('before pushing in', round, 'round results', results)
+        // results.push(`Breath held in round ${round - 1}: ${secondsCounter}`);
+        results.push(`Breath held in round ${round}: ${secondsCounter}`);
+        // results.push(secondsCounter)
+        // console.log('after pushing in', round - 1, 'round results', results)
+        console.log('after pushing in', round, 'round results', results)
+
         numbersDisplay.innerHTML = `${secondsCounter}`;
         stopBtn.classList.remove('show');
 
-        // results.push(`Breath held in round ${round}: ${secondsCounter}`);
+        // results.push(secondsCounter);
+
 
         // setTimeout(() => {
         //     recoveryTime();
@@ -114,6 +129,7 @@ function retentionTime() {
 
         if (secondsCounter == 0) {
             clearInterval(retentionInterval);
+            infoDisplay.innerHTML = '';
             numbersDisplay.innerHTML = ``;
     
             setTimeout(() => {
@@ -121,18 +137,16 @@ function retentionTime() {
             }, 500);
         }
     }, 300);
-
 }
 
 function recoveryTime() {
-    if (round > settingsValues.numberOfRounds) {
-        infoDisplay.innerHTML = `Breathing session over!`;
+    if (round == settingsValues.numberOfRounds) {
+        roundDisplay.innerHTML = `Breathing session over!`;
         numbersDisplay.innerHTML = ``;
 
         // TO DO
-        // displayResults()
+        displayResults();
         // To DO
-
         return;
     }
 
@@ -150,6 +164,7 @@ function recoveryTime() {
         if (secondsCounter == 0) {
             clearInterval(intervalrecoveryTime);
             numbersDisplay.innerHTML = ``;
+            // round++;
             
             setTimeout(() => {
                 // if (round > settingsValues.numberOfRounds) {
@@ -167,6 +182,15 @@ function recoveryTime() {
             }, 1500);
         }
     }, 300);
+}
+
+function displayResults() {
+    // results.splice(1, 1)
+    results.forEach(res => {
+        let resPar = document.createElement('p');
+        resPar.innerHTML = `${res}`
+        infoDisplay.append(resPar)
+    });
 }
 
 // function populateIndicators() {
