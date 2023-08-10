@@ -1,0 +1,39 @@
+/* settings panel */
+.settings h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.settings form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+
+    & div:last-child {
+        margin-top: 1rem;
+    }
+}
+
+.settings form input {
+    width: 100%;
+    height: .3rem;
+}
+
+.indicators {
+    list-style: none;
+    font-size: .8rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.settings form button[type='submit'] {
+    width: 100%;
+    padding: .5rem;
+    margin-top: 2rem;
+    border-radius: .2rem;
+    border: 1px solid var(--font-clr);
+    /* border: none; */
+    background-color: var(--bg-clr);
+    color: var(--font-clr);
+    text-transform: uppercase;
+}

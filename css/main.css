@@ -1,3 +1,7 @@
+@import './blocks.css';
+@import './settingsPanel.css';
+@import './displayPanel.css';
+
 :root {
     --bg-clr: #6eaed2;
     --font-clr: #0b2f51;
@@ -13,6 +17,11 @@
     padding: 0;
 }
 
+button,
+input {
+    cursor: pointer;
+}
+
 body {
     background-color: #222;
     color: var(--font-clr);
@@ -25,240 +34,44 @@ body {
     background-attachment: fixed;
 }
 
-header {
-    text-align: center;
-    padding: 1rem 0 0;
-    height: 4.2rem;
-    /* background-color: teal; */
-    /* background-color: var(--bg-clr); */
-    background-image: linear-gradient(to right, var(--bg-clr), #fff, var(--bg-clr));
-    box-shadow: var(--box-shadow);
-
-    & h1 {
-        position: relative;
-        line-height: 1;
-    }
-
-    & .title-accent {
-        position: absolute;
-        bottom: -1rem;
-        transform: translate(-45%, -10%);
-        font-size: 1.25rem;
-        letter-spacing: .7rem;
-    }
-}
-
-.app {
-    display: grid;
-    place-content: center;
-    grid-template-columns: 1fr;
-    grid-gap: 4rem;
-    padding: 3rem;
-    
-    /* container-type: inline-size; */
-}
-
-.app > section {
-    background-color: var(--panel-bg);
-    backdrop-filter: var(--blur);
-    box-shadow: var(--panel-box-shadow);
-    border: 1px solid #fff;
-    /* display: grid;
-    place-content: center; */
-    padding: 2rem 3rem 1rem;
-    border-radius: 1rem;
-
-    & div {
-        padding-top: 1rem;
-    }
-}
-
-/* display panel */
-.display {
-    text-align: center;
-}
-
-.rounds-display {
-    min-height: 1rem;
-}
-
-.info-display p {
-    font-size: 1.5rem;
-}
-
-.numbers-display p {
-    min-height: 5.25rem;
-    font-size: 4rem;
-}
-
-.controls {
-    --container-height: 8rem;
-    /* background-color: red; */
-    height: var(--container-height);
-
-    & button {
-        background-color: hsla(202, 59%, 57%, 0.5);
-        box-shadow: inset 0 0 6px 1px var(--font-clr);;
-        outline: none;
-        border: none;
-        /* border: 1px solid var(--font-clr); */
-        /* border: 1rem solid #eee; */
-        /* background-color: teal; */
-        position: absolute;
-        transform: translateX(-50%);
-        height: calc(var(--container-height) - 1rem);
-        aspect-ratio: 1 / 1;
-        border-radius: 100%;
-        font-size: 1.25rem;
-    }
-    
-    & button[data-stop-btn] {
-        opacity: 0;
-        transition: opacity 300ms;
-    }
-
-    & button[data-stop-btn].show {        
-        opacity: 1;
-    }
-}
-
-/* settings panel */
-.settings h2 {
-    text-align: center;
-    font-size: 2rem;
-}
-
-.settings form {
-    display: flex;
-    flex-direction: column;
-    padding-top: 1rem;
-
-    & div:last-child {
-        margin-top: 1rem;
-    }
-}
-
-.settings form input {
-    width: 100%;
-    height: .3rem;
-}
-
-.indicators {
-    list-style: none;
-    font-size: .8rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-.settings form button[type='submit'] {
-    width: 100%;
-    padding: .5rem;
-    margin-top: 2rem;
-    border-radius: .2rem;
-    border: 1px solid var(--font-clr);
-    /* border: none; */
-    background-color: var(--bg-clr);
-    color: var(--font-clr);
-    text-transform: uppercase;
-}
-
-button {
-    cursor: pointer;
-}
-
-/* .settings h2 {
-    text-align: center;
-} */
-
-/* form {
-    width: 80%;
-    margin: 0 auto;
-} */
-
-/* input, label {
-    display: block;
-    width: 100%;
-} */
-
-/* .display { */
-    /* text-align: center; */
-    /* display: grid;
-    grid-template-rows: 1fr 1fr 2fr 3fr;
-    place-items: center;
-    text-align: center; */
-    /* min-height: 70vh; */
-/* } */
-
-/* .numbers-display { */
-    /* font-size: 5rem; */
-/* } */
-
-/* .controls { */
-    /* display: grid;
-    place-items: center;
-    height: 10rem;
-    width: 100%;
-    background-color: red; */
-/* } */
-
-/* .controls > button { */
-    /* outline: none;
-    border: none;
-    position: absolute; */
-    /* width: 10rem;
-    height: 10rem;
-    aspect-ratio: 1 / 1;
-    border-radius: 100%; */
-/* } */
-
-/* .settings { */
-    /* display: grid; */
-    /* place-items: center; */
-/* }
-    .settings > div { */
-        /* display: grid; */
-    /* } */
-
-/* form { */
-    /* width: 80%;
-    margin: 2rem auto; */
-    /* display: grid; */
-    /* max-width: 500px;
-    margin: 5rem auto;
-    padding: 2rem;
-    background-color: #999; */
-/* } */
-
-/* form button[type='submit'] { */
-    /* margin: 2rem auto 0; */
-/* } */
-
-/* .app {
-    padding: 2rem;
-    background-color: teal;
-} */
-
-footer {
-    text-align: center;
-    padding: .5rem;
-    margin-top: auto;
-    /* background-color: var(--bg-clr); */
-    background-image: linear-gradient(to right, var(--bg-clr), #fff, var(--bg-clr));
-    box-shadow: var(--box-shadow);
-
-    & a {
-        text-decoration: none;
-        color: teal;
-        font-size: .8rem;
-    }
-}
-
 /* @container (min-width: 724px) {
 
         header {
             background: red;
         }
 } */
+
+
+@media (min-height: 667px) {
+    .display {
+        min-height: 60dvh;
+    }
+}
+@media (min-height: 736px) {
+    .display {
+        min-height: 62dvh;
+    }
+}
+@media (min-height: 740px) {
+    .display {
+        min-height: 63dvh;
+    }
+}
+@media (min-height: 812px) {
+    .display {
+        min-height: 66dvh;
+    }
+}
+@media (min-height: 844px) {
+    .display {
+        min-height: 67dvh;
+    }
+}
+@media (min-height: 896px) {
+    .display {
+        min-height: 69dvh;
+    }
+}
 
 @media screen and (min-width: 1024px) {
     .app {

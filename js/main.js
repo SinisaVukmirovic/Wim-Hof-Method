@@ -7,41 +7,32 @@ import {
     infoDisplay, 
     roundDisplay,
     numbersDisplay
-    // breathNumberDisplay, 
-    // breathHeldDisplay 
 } from './DOMelements.js';
 
 import getSettingsValues, { settingsValues } from './getSettingsValue.js';
 
-// console.log(settingsValues);
+import displayResults, { results } from './displayResults.js';
         
 getSettingsValues();
-// console.log(settingsValues);
+console.log(settingsValues);
 
 settingsForm.addEventListener('submit', e => {
     e.preventDefault();
     
     getSettingsValues();            
-    console.log(settingsValues)
+    console.log(settingsValues);
 });
 
 let round = 0;
-// let round = 1;
-let results = [];
-console.log('initialization of results', results)
+// let results = [];
+// console.log('initialization of results', results)
 
-startBtn.addEventListener('click', startApp);
+startBtn.addEventListener('click', startSession);
 
-
-function startApp() {
-    // if (round > settingsValues.numberOfRounds) {
-    //     infoDisplay.innerHTML = `Breathing session over!`;
-    //     return;
-    // }
-    ++round;
+function startSession() {
     startBtn.style.display = 'none';
+    ++round;
     roundDisplay.innerHTML = `Round ${round}`;
-    // round++;
 
     let breathNumber = settingsValues.numberOfBreaths;
 
@@ -52,23 +43,15 @@ function startApp() {
         breathNumber--;
         numbersDisplay.innerHTML = `${breathNumber}`;
 
-        if (breathNumber == 4) {
-            infoDisplay.innerHTML = 'Final breath coming up!';
-        }
-        if (breathNumber == 2) {
-            infoDisplay.innerHTML = 'Breath in deep...';
-        }
-        if (breathNumber == 1) {
-            infoDisplay.innerHTML = '...exhale...';
-        }
-        // if (breathNumber == 0) {
-            // infoDisplay.innerHTML = '...and hold your breath.';
-        // }
-
+        if (breathNumber == 4) infoDisplay.innerHTML = 'Final breath coming up!';
+        
+        if (breathNumber == 2) infoDisplay.innerHTML = 'Breath in deep...';
+        
+        if (breathNumber == 1) infoDisplay.innerHTML = '...exhale...';
+        
         if (breathNumber == 0) {
             clearInterval(intervalBreathsCounter);
             infoDisplay.innerHTML = '...and hold your breath.';
-            // infoDisplay.innerHTML = 'Hold breath as long as you can!';
             numbersDisplay.innerHTML = ``;
 
             setTimeout(() => {
@@ -76,13 +59,12 @@ function startApp() {
             }, 1500);
         };
     }, settingsValues.breathingPace * 300);
-    // round++;
 }
 
 function breathHolding() {
     stopBtn.classList.add('show');
     infoDisplay.innerHTML = 'Hold breath as long as you can!';
-    let secondsCounter = 0;
+    let secondsCounter = 1;
 
     const intervalSecondsCounter = setInterval(() => {
         secondsCounter++;
@@ -94,22 +76,18 @@ function breathHolding() {
         
         infoDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
         // console.log('before pushing in', round - 1, 'round results', results)
-        console.log('before pushing in', round, 'round results', results)
+        // console.log('before pushing in', round, 'round results', results)
         // results.push(`Breath held in round ${round - 1}: ${secondsCounter}`);
-        results.push(`Breath held in round ${round}: ${secondsCounter}`);
+        
+        results.push(`Breath held in round ${round}: ${secondsCounter} seconds.`);
+
         // results.push(secondsCounter)
         // console.log('after pushing in', round - 1, 'round results', results)
-        console.log('after pushing in', round, 'round results', results)
+        // console.log('after pushing in', round, 'round results', results)
 
         numbersDisplay.innerHTML = `${secondsCounter}`;
         stopBtn.classList.remove('show');
 
-        // results.push(secondsCounter);
-
-
-        // setTimeout(() => {
-        //     recoveryTime();
-        // }, 2000);
         setTimeout(() => {
             retentionTime();
         }, 1500);
@@ -143,15 +121,14 @@ function recoveryTime() {
     if (round == settingsValues.numberOfRounds) {
         roundDisplay.innerHTML = `Breathing session over!`;
         numbersDisplay.innerHTML = ``;
-
-        // TO DO
+        // TO DO \\\\\\\\\
         displayResults();
-        // To DO
+        // To DO /////////
         return;
     }
 
     let secondsCounter = settingsValues.recoveryTime;
-    infoDisplay.innerHTML = 'Pause and Recover';
+    infoDisplay.innerHTML = 'Pause to Recover';
 
     const intervalrecoveryTime = setInterval(() => {
         numbersDisplay.innerHTML = `${secondsCounter}`;
@@ -164,54 +141,10 @@ function recoveryTime() {
         if (secondsCounter == 0) {
             clearInterval(intervalrecoveryTime);
             numbersDisplay.innerHTML = ``;
-            // round++;
             
             setTimeout(() => {
-                // if (round > settingsValues.numberOfRounds) {
-                    //     stopSessionDisplayResults();
-                    //     return;
-                    // }
-                // numbersDisplay.innerHTML = ``;
-
-                // if (round > settingsValues.numberOfRounds) {
-                //     infoDisplay.innerHTML = `Breathing session over!`;
-                //     return;
-                // }
-
-                startApp();
-            }, 1500);
+                startSession();
+            }, 500);
         }
     }, 300);
 }
-
-function displayResults() {
-    // results.splice(1, 1)
-    results.forEach(res => {
-        let resPar = document.createElement('p');
-        resPar.innerHTML = `${res}`
-        infoDisplay.append(resPar)
-    });
-}
-
-// function populateIndicators() {
-//     const indicatorsValues = [20, 30, 40, 50];
-//     const ulElem = document.createElement('ul');
-//     indicatorsValues.forEach(ind => {
-//         const liElem = document.createElement('li');
-//         liElem.innerHTML = ind;
-//         ulElem.classList.add('indicators');
-//         ulElem.append(liElem);
-//         document.querySelector('.settings form div').append(ulElem);
-//     })
-// }
-// populateIndicators()
-
-
-
-
-
-
-
-
-
-

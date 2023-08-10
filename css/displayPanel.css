@@ -1,0 +1,54 @@
+/* display panel */
+.display {
+    text-align: center;
+    /* min-height: 60dvh; */
+}
+
+.rounds-display {
+    /* min-height: 1.2rem; */
+    font-weight: bold;
+}
+
+.info-display p {
+    font-size: 1.5rem;
+}
+
+.numbers-display p {
+    /* min-height: 7.5rem; */
+    font-size: 7rem;
+    color: #fff;
+    font-weight: bold;  
+    -webkit-text-stroke: 1px var(--font-clr);
+}
+
+.controls {
+    --container-height: 8rem;
+    height: var(--container-height);
+
+    & button {
+        background-color: hsla(202, 59%, 57%, 0.4);
+        box-shadow: inset 0 0 3px 1px var(--bg-clr);;
+        outline: none;
+        border: none;
+        border: 1px solid var(--font-clr);
+        /* border: 1rem solid #eee; */
+        /* background-color: teal; */
+        position: absolute;
+        transform: translateX(-50%);
+        height: calc(var(--container-height) - 1rem);
+        aspect-ratio: 1 / 1;
+        border-radius: 100%;
+        font-size: 1.25rem;
+    }
+    
+    & button[data-stop-btn] {
+        opacity: 0;
+        scale: 0;
+        transition: opacity 300ms;
+    }
+
+    & button[data-stop-btn].show {        
+        opacity: 1;
+        scale: 1;
+    }
+}
