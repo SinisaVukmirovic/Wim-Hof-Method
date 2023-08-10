@@ -1,10 +1,7 @@
 :root {
-    --bg-clr: #6eaed2;;
-    --dark-clr: #222;
-    --theme-clr: teal;
-    --accent-clr: cyan;
+    --bg-clr: #6eaed2;
     --font-clr: #0b2f51;
-    --panel-bg: rgba(255, 255, 255, .5);
+    --panel-bg: rgba(255, 255, 255, .4);
     --blur: blur(6px);
     --panel-box-shadow: inset 0 0 12px 4px var(--bg-clr);
     --box-shadow: 0 0 3px 1px #fff;
@@ -100,8 +97,11 @@ header {
     height: var(--container-height);
 
     & button {
-        /* outline: none; */
+        background-color: hsla(202, 59%, 57%, 0.5);
+        box-shadow: inset 0 0 6px 1px var(--font-clr);;
+        outline: none;
         border: none;
+        /* border: 1px solid var(--font-clr); */
         /* border: 1rem solid #eee; */
         /* background-color: teal; */
         position: absolute;
@@ -160,6 +160,10 @@ header {
     background-color: var(--bg-clr);
     color: var(--font-clr);
     text-transform: uppercase;
+}
+
+button {
+    cursor: pointer;
 }
 
 /* .settings h2 {
@@ -260,5 +264,8 @@ footer {
     .app {
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+    .display {
+        order: 2;
     }
 }
