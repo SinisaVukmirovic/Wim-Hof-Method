@@ -1,13 +1,20 @@
 /* settings panel */
 .settings h2 {
+    font-family: 'Russo One', sans-serif;
+    opacity: .7;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
 }
 
 .settings form {
     display: flex;
     flex-direction: column;
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
+
+    & div:first-child {
+        padding-top: 0;
+    }
 
     & div:last-child {
         margin-top: 1rem;
@@ -20,8 +27,10 @@
 }
 
 .indicators {
+    font-family: 'Gruppo', sans-serif;
+    font-weight: bold;
     list-style: none;
-    font-size: .8rem;
+    font-size: .9rem;
     display: flex;
     justify-content: space-between;
 }
@@ -30,10 +39,15 @@
     width: 100%;
     padding: .5rem;
     margin-top: 2rem;
-    border-radius: .2rem;
+    border-radius: .3rem;
     border: 1px solid var(--font-clr);
     /* border: none; */
     background-color: var(--bg-clr);
     color: var(--font-clr);
     text-transform: uppercase;
+    background-color: hsla(202, 59%, 57%, 0.3);
+    box-shadow: inset 0 0 3px 1px var(--bg-clr);;
+    outline: none;
+    border: 1px solid var(--font-clr);
+    font-weight: bold;
 }

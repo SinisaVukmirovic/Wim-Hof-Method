@@ -17,9 +17,25 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
 button,
 input {
     cursor: pointer;
+}
+
+label {
+    font-family: 'Gruppo', sans-serif;
+    font-weight: bold;
+    font-size: 1.15rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 body {
@@ -30,7 +46,7 @@ body {
     min-height: 100dvh;
     background-image: url('../assets/bg-2.jpg');
     background-size: cover;
-    /* background-position: center; */
+    background-position: center 30%;
     background-attachment: fixed;
 }
 
@@ -45,6 +61,11 @@ body {
 @media (min-height: 667px) {
     .display {
         min-height: 60dvh;
+    }
+}
+@media (min-height: 720px) {
+    .display {
+        min-height: 62dvh;
     }
 }
 @media (min-height: 736px) {
@@ -73,12 +94,54 @@ body {
     }
 }
 
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 720px) {
     .app {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
     .display {
         order: 2;
+    }
+} */
+@media screen and (min-width: 1024px) {
+    html {
+        font-size: 18px;
+    }
+    .app {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 5rem;
+    }
+    .app > section {
+        padding: 2rem 2rem 1rem;
+    }
+
+    .display {
+        order: 2;
+    }
+}
+@media screen and (min-width: 1180px) {
+    .app {
+        max-width: 1100px;
+        grid-template-columns: 2fr 3fr;
+    }
+}
+@media screen and (min-width: 1368px) {
+    html {
+        font-size: 20px;
+    }
+    .app {
+        max-width: 1300px;
+        grid-template-columns: 3fr 4fr;
+        grid-gap: 6rem;
+    }
+    .app > section {
+        padding: 2rem 3rem 1rem;
+    }
+    .numbers-display p {
+        min-height: 10rem;
+        font-size: 9rem;
     }
 }

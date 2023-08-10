@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Russo+One&display=swap" rel="stylesheet">
     <title>Wim Hof Method</title>
     <link rel="stylesheet" href="./css/main.css">
     <!-- <script src="./js/main.js" defer></script> -->
     <script type="module" src="./js/main.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Wim Hof<br><span class="title-accent">Method</h1>
@@ -31,23 +36,26 @@
             </div>
         </section>
 
-        <section class="settings">
-            <h2>Settings</h2>
+        <section class="settings" id="justForScroll">
+            <a href="#justForScroll">
+                <h2 href="#justForScroll">Settings</h2>
+            </a>
+
             <form>
                 <div>
                     <label for="">Number of breaths in round</label>
                     <input type="range" min="20" max="50" step="10" value="30" data-breaths-number>
                 </div>
                 <div>
-                    <label for="">Breathing pace</label>
+                    <label for="">Breathing pace <small>(seconds)</small></label>
                     <input type="range" min="2" max="6" value="4" data-breathing-pace>
                 </div>
                 <div>
                     <label for="">Number of rounds</label>
-                    <input type="range" min="2" max="5" value="3"  data-rounds-number>
+                    <input type="range" min="2" max="5" value="3" data-rounds-number>
                 </div>
                 <div>
-                    <label for="">Recovery time</label>
+                    <label for="">Recovery time <small>(seconds)</small></label>
                     <input type="range" min="10" max="60" step="5" value="15" data-recovery-time>
                     <!-- <ul class="indicators">
                         <li>10</li>
@@ -63,15 +71,15 @@
                         <li>60</li>
                     </ul> -->
                 </div>
-                
-                    <button type="submit">Save</button>
-                    
+
+                <button type="submit">Save</button>
+
             </form>
         </section>
     </main>
 
     <footer>
-        <a href="">Watch Win Hof's video tutorial</a>
+        <a href="https://www.youtube.com/watch?v=nzCaZQqAs9I" target="_blank">Watch Win Hof's video tutorial</a>
     </footer>
 
     <!-- <div class="app">
@@ -99,6 +107,7 @@
 
         <button type="submit">Save</button>
     </form> -->
-    
+
 </body>
+
 </html>
