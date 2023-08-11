@@ -92,11 +92,11 @@
         font-size: 1.5rem;
     }
     
-    .info-display p {
-        font-size: 1.75rem;
+    .info-display {
+        font-size: 2.25rem;
     }
     
-    .numbers-display p {
+    .numbers-display {
         min-height: 8rem;
         font-size: 7rem;
     }
@@ -122,11 +122,11 @@
         font-size: 1.7rem;
     }
     
-    .info-display p {
-        font-size: 2rem;
+    .info-display {
+        font-size: 2.5rem;
     }
     
-    .numbers-display p {
+    .numbers-display {
         min-height: 10rem;
         font-size: 9rem;
     }

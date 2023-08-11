@@ -54,28 +54,30 @@ function startSession() {
             infoDisplay.innerHTML = '...and hold your breath.';
             numbersDisplay.innerHTML = ``;
 
-            setTimeout(() => {
-                breathHolding();
-            }, 1500);
+            // setTimeout(() => {
+            breathHolding();
+                // }, 1500);
         };
-    }, settingsValues.breathingPace * 300);
+    }, settingsValues.breathingPace * 1000);
 }
 
 function breathHolding() {
     stopBtn.classList.add('show');
     infoDisplay.innerHTML = 'Hold breath as long as you can!';
-    let secondsCounter = 1;
+    let secondsCounter = 0;
 
     const intervalSecondsCounter = setInterval(() => {
         secondsCounter++;
         numbersDisplay.innerHTML = `${secondsCounter}`;
-    }, 300);
+    }, 1000);
 
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
         
         // infoDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
+        infoDisplay.innerHTML = 'Breathe in deep and hold breath!'
         roundDisplay.innerHTML = `Round ${round}<br>Breath held for ${secondsCounter} seconds!`;
+        numbersDisplay.innerHTML = `${secondsCounter}`;
 
         // console.log('before pushing in', round - 1, 'round results', results)
         // console.log('before pushing in', round, 'round results', results)
@@ -87,36 +89,36 @@ function breathHolding() {
         // console.log('after pushing in', round - 1, 'round results', results)
         // console.log('after pushing in', round, 'round results', results)
 
-        numbersDisplay.innerHTML = `${secondsCounter}`;
         stopBtn.classList.remove('show');
 
         setTimeout(() => {
             retentionTime();
-        }, 1500);
+        }, 2000);
     });
 }
 
 function retentionTime() {
     let secondsCounter = 15;
-    infoDisplay.innerHTML = 'Take a deep breath and hold!';
+    // infoDisplay.innerHTML = 'Take a deep breath and hold!';
+    infoDisplay.innerHTML = 'Hold you breath';
     const retentionInterval = setInterval(() => {
         secondsCounter--;
         numbersDisplay.innerHTML = `${secondsCounter}`;
 
         if (secondsCounter == 1) {
-            infoDisplay.innerHTML = 'Exhale and rest for a while!';
+            infoDisplay.innerHTML = 'Exhale and pause...';
         }
 
         if (secondsCounter == 0) {
             clearInterval(retentionInterval);
-            infoDisplay.innerHTML = '';
+            // infoDisplay.innerHTML = '';
             numbersDisplay.innerHTML = ``;
     
             setTimeout(() => {
                 recoveryTime();
-            }, 500);
+            }, 1200);
         }
-    }, 300);
+    }, 1000);
 }
 
 function recoveryTime() {
@@ -130,7 +132,7 @@ function recoveryTime() {
     }
 
     let secondsCounter = settingsValues.recoveryTime;
-    infoDisplay.innerHTML = 'Pause to Recover';
+    infoDisplay.innerHTML = 'Rest and recover...';
 
     const intervalrecoveryTime = setInterval(() => {
         numbersDisplay.innerHTML = `${secondsCounter}`;
@@ -148,5 +150,5 @@ function recoveryTime() {
                 startSession();
             }, 500);
         }
-    }, 300);
+    }, 1000);
 }

@@ -1,7 +1,0 @@
-Number of breaths in round 20 - 50 (steps 10)
-
-Breathing pace (seconds to inhale and exhale) (2 - 6)
-
-Number of rounds 2 - 5
-
-Recovery time is secs 10 - 60 (steps 10)
