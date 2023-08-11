@@ -29,7 +29,7 @@ header {
     place-content: center;
     grid-template-columns: 1fr;
     grid-gap: 4rem;
-    padding: 3rem;
+    padding: 2rem;
     
     /* container-type: inline-size; */
 }
@@ -43,7 +43,7 @@ header {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    padding: 2rem 1rem 1rem;
+    padding: 2rem 1.5rem 1rem;
     border-radius: 1rem;
 
     & div {

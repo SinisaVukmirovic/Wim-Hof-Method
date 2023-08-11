@@ -74,7 +74,9 @@ function breathHolding() {
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
         
-        infoDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
+        // infoDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
+        roundDisplay.innerHTML = `Round ${round}<br>Breath held for ${secondsCounter} seconds!`;
+
         // console.log('before pushing in', round - 1, 'round results', results)
         // console.log('before pushing in', round, 'round results', results)
         // results.push(`Breath held in round ${round - 1}: ${secondsCounter}`);

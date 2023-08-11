@@ -4,7 +4,7 @@
 }
 
 .rounds-display {
-    min-height: 1.5rem;
+    min-height: 1rem;
     font-family: 'Russo One', sans-serif;
     opacity: .7;
     font-weight: bold;
@@ -18,9 +18,9 @@
 }
 
 .numbers-display p {
-    min-height: 8rem;
+    min-height: 7rem;
     font-family: 'Russo One', sans-serif;
-    font-size: 7rem;
+    font-size: 6rem;
     color: #fff;
     /* font-weight: bold;   */
     -webkit-text-stroke: 1px var(--font-clr);

@@ -1,0 +1,137 @@
+@media (min-height: 667px) {
+    .display {
+        min-height: 62dvh;
+    }
+}
+@media (min-height: 720px) {
+    .display {
+        min-height: 62dvh;
+    }
+}
+@media (min-height: 736px) {
+    .display {
+        min-height: 65dvh;
+    }
+}
+@media (min-height: 740px) {
+    .display {
+        min-height: 65dvh;
+    }
+}
+@media (min-height: 812px) {
+    .display {
+        min-height: 69dvh;
+    }
+}
+/* @media (min-height: 844px) {
+    .display {
+        min-height: 69dvh;
+    }
+} */
+@media (min-height: 896px) {
+    .display {
+        min-height: 71dvh;
+    }
+}
+
+/* @container (min-width: 724px) {
+
+        header {
+            background: red;
+        }
+} */
+
+/* @media screen and (min-width: 720px) {
+    .app {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .display {
+        order: 2;
+    }
+} */
+
+@media screen and (min-width: 720px) {
+    .app {
+        max-width: 700px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 3rem;
+    }
+    .display {
+        order: 2;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    html {
+        font-size: 18px;
+    }
+    .app {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 5rem;
+    }
+    .app > section {
+        padding: 2rem 2rem 1rem;
+    }
+
+    .display {
+        order: 2;
+    }
+}
+@media screen and (min-width: 1180px) {
+    .app {
+        max-width: 1100px;
+        grid-template-columns: 2fr 3fr;
+    }
+    .rounds-display {
+        font-size: 1.5rem;
+    }
+    
+    .info-display p {
+        font-size: 1.75rem;
+    }
+    
+    .numbers-display p {
+        min-height: 8rem;
+        font-size: 7rem;
+    }
+
+    label {
+        font-size: 1.3rem;
+    }
+}
+@media screen and (min-width: 1368px) {
+    /* html {
+        font-size: 20px;
+    } */
+    .app {
+        max-width: 1300px;
+        grid-template-columns: 3fr 4fr;
+        grid-gap: 6rem;
+    }
+    .app > section {
+        padding: 2rem 3rem 1rem;
+    }
+
+    .rounds-display {
+        font-size: 1.7rem;
+    }
+    
+    .info-display p {
+        font-size: 2rem;
+    }
+    
+    .numbers-display p {
+        min-height: 10rem;
+        font-size: 9rem;
+    }
+    
+    label {
+        font-size: 1.5rem;
+    }
+}

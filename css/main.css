@@ -1,6 +1,7 @@
 @import './blocks.css';
 @import './settingsPanel.css';
 @import './displayPanel.css';
+@import './media-queries.css';
 
 :root {
     --bg-clr: #6eaed2;
@@ -27,12 +28,6 @@ input {
     cursor: pointer;
 }
 
-label {
-    font-family: 'Gruppo', sans-serif;
-    font-weight: bold;
-    font-size: 1.15rem;
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -50,98 +45,3 @@ body {
     background-attachment: fixed;
 }
 
-/* @container (min-width: 724px) {
-
-        header {
-            background: red;
-        }
-} */
-
-
-@media (min-height: 667px) {
-    .display {
-        min-height: 60dvh;
-    }
-}
-@media (min-height: 720px) {
-    .display {
-        min-height: 62dvh;
-    }
-}
-@media (min-height: 736px) {
-    .display {
-        min-height: 62dvh;
-    }
-}
-@media (min-height: 740px) {
-    .display {
-        min-height: 63dvh;
-    }
-}
-@media (min-height: 812px) {
-    .display {
-        min-height: 66dvh;
-    }
-}
-@media (min-height: 844px) {
-    .display {
-        min-height: 67dvh;
-    }
-}
-@media (min-height: 896px) {
-    .display {
-        min-height: 69dvh;
-    }
-}
-
-/* @media screen and (min-width: 720px) {
-    .app {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    .display {
-        order: 2;
-    }
-} */
-@media screen and (min-width: 1024px) {
-    html {
-        font-size: 18px;
-    }
-    .app {
-        max-width: 1000px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 5rem;
-    }
-    .app > section {
-        padding: 2rem 2rem 1rem;
-    }
-
-    .display {
-        order: 2;
-    }
-}
-@media screen and (min-width: 1180px) {
-    .app {
-        max-width: 1100px;
-        grid-template-columns: 2fr 3fr;
-    }
-}
-@media screen and (min-width: 1368px) {
-    html {
-        font-size: 20px;
-    }
-    .app {
-        max-width: 1300px;
-        grid-template-columns: 3fr 4fr;
-        grid-gap: 6rem;
-    }
-    .app > section {
-        padding: 2rem 3rem 1rem;
-    }
-    .numbers-display p {
-        min-height: 10rem;
-        font-size: 9rem;
-    }
-}
