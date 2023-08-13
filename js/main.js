@@ -23,12 +23,19 @@ settingsForm.addEventListener('submit', e => {
     console.log(settingsValues);
 });
 
-
 startBtn.addEventListener('click', startSession);
 
+let roundNumber = 0;
+
 function startSession() {
+    roundNumber++;
+    if (roundNumber > settingsValues.numberOfRounds) {
+        return;
+    }
     let counter = settingsValues.numberOfBreaths;
     console.log(counter);
+    roundDisplay.textContent = `Round ${roundNumber}`;
+    infoDisplay.textContent = '';
 
     const intervalBreathsCounter = setInterval(() => {
         counter--;
@@ -39,6 +46,23 @@ function startSession() {
         if (counter == 0) {
             clearInterval(intervalBreathsCounter);
             numbersDisplay.textContent = '';
+
+            breathHolding();
         }
     }, 333);
+}
+
+
+
+console.log('round', roundNumber)
+
+function breathHolding() {
+    let secondsCounter = 0;
+    stopBtn.classList.add('show');
+    const intervalSecindsCounter = setInterval(() => {
+        secondsCounter++
+        infoDisplay.textContent = secondsCounter;
+    }, 333);
+
+    stopBtn
 }
