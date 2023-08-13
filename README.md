@@ -1,6 +1,6 @@
 ## Wim Hof breathing method
 ___
-### Helped me during disability
+### Helped me when I was disabled
 
 ___
 

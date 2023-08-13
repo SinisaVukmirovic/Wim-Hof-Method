@@ -23,132 +23,22 @@ settingsForm.addEventListener('submit', e => {
     console.log(settingsValues);
 });
 
-let round = 0;
-// let results = [];
-// console.log('initialization of results', results)
 
 startBtn.addEventListener('click', startSession);
 
 function startSession() {
-    startBtn.style.display = 'none';
-    ++round;
-    roundDisplay.innerHTML = `Round ${round}`;
-
-    let breathNumber = settingsValues.numberOfBreaths;
-
-    infoDisplay.innerHTML = `Breaths left`;
-    numbersDisplay.innerHTML = `${breathNumber}`;
+    let counter = settingsValues.numberOfBreaths;
+    console.log(counter);
 
     const intervalBreathsCounter = setInterval(() => {
-        breathNumber--;
-        numbersDisplay.innerHTML = `${breathNumber}`;
+        counter--;
+        console.log(counter);
+        numbersDisplay.textContent = counter;
 
-        if (breathNumber == 4) infoDisplay.innerHTML = 'Final breath coming up!';
-        
-        if (breathNumber == 2) infoDisplay.innerHTML = 'Breath in deep...';
-        
-        if (breathNumber == 1) infoDisplay.innerHTML = '...exhale...';
-        
-        if (breathNumber == 0) {
+
+        if (counter == 0) {
             clearInterval(intervalBreathsCounter);
-            infoDisplay.innerHTML = '...and hold your breath.';
-            numbersDisplay.innerHTML = ``;
-
-            // setTimeout(() => {
-            breathHolding();
-                // }, 1500);
-        };
-    }, settingsValues.breathingPace * 1000);
-}
-
-function breathHolding() {
-    stopBtn.classList.add('show');
-    infoDisplay.innerHTML = 'Hold breath as long as you can!';
-    let secondsCounter = 0;
-
-    const intervalSecondsCounter = setInterval(() => {
-        secondsCounter++;
-        numbersDisplay.innerHTML = `${secondsCounter}`;
-    }, 1000);
-
-    stopBtn.addEventListener('click', () => {
-        clearInterval(intervalSecondsCounter);
-        
-        // infoDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
-        infoDisplay.innerHTML = 'Breathe in deep and hold breath!'
-        roundDisplay.innerHTML = `Round ${round}<br>Breath held for ${secondsCounter} seconds!`;
-        numbersDisplay.innerHTML = `${secondsCounter}`;
-
-        // console.log('before pushing in', round - 1, 'round results', results)
-        // console.log('before pushing in', round, 'round results', results)
-        // results.push(`Breath held in round ${round - 1}: ${secondsCounter}`);
-        
-        results.push(`Breath held in round ${round}: ${secondsCounter} seconds.`);
-
-        // results.push(secondsCounter)
-        // console.log('after pushing in', round - 1, 'round results', results)
-        // console.log('after pushing in', round, 'round results', results)
-
-        stopBtn.classList.remove('show');
-
-        setTimeout(() => {
-            retentionTime();
-        }, 2000);
-    });
-}
-
-function retentionTime() {
-    let secondsCounter = 15;
-    // infoDisplay.innerHTML = 'Take a deep breath and hold!';
-    infoDisplay.innerHTML = 'Hold you breath';
-    const retentionInterval = setInterval(() => {
-        secondsCounter--;
-        numbersDisplay.innerHTML = `${secondsCounter}`;
-
-        if (secondsCounter == 1) {
-            infoDisplay.innerHTML = 'Exhale and pause...';
+            numbersDisplay.textContent = '';
         }
-
-        if (secondsCounter == 0) {
-            clearInterval(retentionInterval);
-            // infoDisplay.innerHTML = '';
-            numbersDisplay.innerHTML = ``;
-    
-            setTimeout(() => {
-                recoveryTime();
-            }, 1200);
-        }
-    }, 1000);
-}
-
-function recoveryTime() {
-    if (round == settingsValues.numberOfRounds) {
-        roundDisplay.innerHTML = `Breathing session over!`;
-        numbersDisplay.innerHTML = ``;
-        // TO DO \\\\\\\\\
-        displayResults();
-        // To DO /////////
-        return;
-    }
-
-    let secondsCounter = settingsValues.recoveryTime;
-    infoDisplay.innerHTML = 'Rest and recover...';
-
-    const intervalrecoveryTime = setInterval(() => {
-        numbersDisplay.innerHTML = `${secondsCounter}`;
-        secondsCounter--;
-
-        if (secondsCounter == 2) {
-            infoDisplay.innerHTML = 'Next round coming up!';
-        }
-
-        if (secondsCounter == 0) {
-            clearInterval(intervalrecoveryTime);
-            numbersDisplay.innerHTML = ``;
-            
-            setTimeout(() => {
-                startSession();
-            }, 500);
-        }
-    }, 1000);
+    }, 333);
 }
