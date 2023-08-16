@@ -23,13 +23,15 @@ settingsForm.addEventListener('submit', e => {
     console.log(settingsValues);
 });
 
+let oneSec = 222;   //just for testing
+// let oneSec = 1000;
 let round = 0;
 // let results = [];
 // console.log('initialization of results', results)
 
-startBtn.addEventListener('click', startSession);
+startBtn.addEventListener('click', startNewRound);
 
-function startSession() {
+function startNewRound() {
     startBtn.style.display = 'none';
     ++round;
     roundDisplay.innerHTML = `Round ${round}`;
@@ -58,7 +60,7 @@ function startSession() {
             breathHolding();
                 // }, 1500);
         };
-    }, settingsValues.breathingPace * 333);
+    }, settingsValues.breathingPace * oneSec);
 }
 
 function breathHolding() {
@@ -69,7 +71,7 @@ function breathHolding() {
     const intervalSecondsCounter = setInterval(() => {
         secondsCounter++;
         numbersDisplay.innerHTML = `${secondsCounter}`;
-    }, 333);
+    }, oneSec);
 
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
@@ -118,7 +120,7 @@ function retentionTime() {
                 recoveryTime();
             }, 1200);
         }
-    }, 333);
+    }, oneSec);
 }
 
 function recoveryTime() {
@@ -147,8 +149,8 @@ function recoveryTime() {
             numbersDisplay.innerHTML = ``;
             
             setTimeout(() => {
-                startSession();
+                startNewRound();
             }, 500);
         }
-    }, 333);
+    }, oneSec);
 }
