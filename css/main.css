@@ -6,7 +6,7 @@
 :root {
     --bg-clr: #6eaed2;
     --font-clr: #0b2f51;
-    --panel-bg: rgba(255, 255, 255, .4);
+    --panel-bg: rgba(255, 255, 255, .45);
     --blur: blur(6px);
     --panel-box-shadow: inset 0 0 12px 4px var(--bg-clr);
     --box-shadow: 0 0 3px 1px #fff;

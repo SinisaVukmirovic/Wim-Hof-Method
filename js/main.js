@@ -11,7 +11,7 @@ import {
 
 import getSettingsValues, { settingsValues } from './getSettingsValue.js';
 
-import displayResults, { results } from './displayResults.js';
+import displayResults, { roundResults } from './displayResults.js';
         
 getSettingsValues();
 console.log(settingsValues);
@@ -23,17 +23,15 @@ settingsForm.addEventListener('submit', e => {
     console.log(settingsValues);
 });
 
-let oneSec = 222;   //just for testing
-// let oneSec = 1000;
+// let oneSec = 222;   //just for testing
+let oneSec = 1000;
 let round = 0;
-// let results = [];
-// console.log('initialization of results', results)
 
 startBtn.addEventListener('click', startNewRound);
 
 function startNewRound() {
+    round++;
     startBtn.style.display = 'none';
-    ++round;
     roundDisplay.innerHTML = `Round ${round}`;
 
     let breathNumber = settingsValues.numberOfBreaths;
@@ -81,22 +79,24 @@ function breathHolding() {
         roundDisplay.innerHTML = `Round ${round}<br>Breath held for ${secondsCounter} seconds!`;
         numbersDisplay.innerHTML = `${secondsCounter}`;
 
-        // console.log('before pushing in', round - 1, 'round results', results)
-        // console.log('before pushing in', round, 'round results', results)
-        // results.push(`Breath held in round ${round - 1}: ${secondsCounter}`);
+        // console.log('before pushing in', round - 1, 'round results', roundResults)
+        // console.log('before pushing in', round, 'round results', roundResults)
+        // roundResults.push(`Breath held in round ${round - 1}: ${secondsCounter}`);
         
-        results.push(`Breath held in round ${round}: ${secondsCounter} seconds.`);
+        // roundResults.push(`Breath held in round ${round}: <strong>${secondsCounter}</strong> seconds.`);
+        roundResults.push(`Round ${round}: ${secondsCounter} seconds.`);
 
         // results.push(secondsCounter)
-        // console.log('after pushing in', round - 1, 'round results', results)
-        // console.log('after pushing in', round, 'round results', results)
+        // console.log('after pushing in', round - 1, 'round results', roundResults)
+        // console.log('after pushing in', round, 'round results', roundResults)
 
         stopBtn.classList.remove('show');
 
         setTimeout(() => {
             retentionTime();
         }, 2000);
-    });
+    }, { once: true });
+    // THIS WAS THE BUG!!! FOR THIS APP TO WORK, EVENT LISTENED MUST HAVE OPTION ONCE!!!
 }
 
 function retentionTime() {
@@ -124,12 +124,12 @@ function retentionTime() {
 }
 
 function recoveryTime() {
+    console.log(round, settingsValues.numberOfRounds)
     if (round == settingsValues.numberOfRounds) {
         roundDisplay.innerHTML = `Breathing session over!`;
         numbersDisplay.innerHTML = ``;
-        // TO DO \\\\\\\\\
+        
         displayResults();
-        // To DO /////////
         return;
     }
 
