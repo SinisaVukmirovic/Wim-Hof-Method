@@ -23,8 +23,8 @@ settingsForm.addEventListener('submit', e => {
     console.log(settingsValues);
 });
 
-// let oneSec = 222;   //just for testing
-let oneSec = 1000;
+let oneSec = 222;   //just for testing
+// let oneSec = 1000;
 let round = 0;
 
 startBtn.addEventListener('click', startNewRound);
@@ -54,9 +54,7 @@ function startNewRound() {
             infoDisplay.innerHTML = '...and hold your breath';
             numbersDisplay.innerHTML = ``;
 
-            // setTimeout(() => {
             breathHolding();
-                // }, 1500);
         };
     }, settingsValues.breathingPace * oneSec);
 }
@@ -74,21 +72,11 @@ function breathHolding() {
     stopBtn.addEventListener('click', () => {
         clearInterval(intervalSecondsCounter);
         
-        // infoDisplay.innerHTML = `Breath held for ${secondsCounter} seconds!`;
         infoDisplay.innerHTML = 'Breathe in deep and hold breath!'
         roundDisplay.innerHTML = `Round ${round}<br>Breath held for ${secondsCounter} seconds!`;
         numbersDisplay.innerHTML = `${secondsCounter}`;
 
-        // console.log('before pushing in', round - 1, 'round results', roundResults)
-        // console.log('before pushing in', round, 'round results', roundResults)
-        // roundResults.push(`Breath held in round ${round - 1}: ${secondsCounter}`);
-        
-        // roundResults.push(`Breath held in round ${round}: <strong>${secondsCounter}</strong> seconds.`);
-        roundResults.push(`Round ${round}: ${secondsCounter} seconds.`);
-
-        // results.push(secondsCounter)
-        // console.log('after pushing in', round - 1, 'round results', roundResults)
-        // console.log('after pushing in', round, 'round results', roundResults)
+        roundResults.push(`Round ${round}: ${secondsCounter} <small>seconds</small>.`);
 
         stopBtn.classList.remove('show');
 
@@ -96,19 +84,19 @@ function breathHolding() {
             retentionTime();
         }, 2000);
     }, { once: true });
-    // THIS WAS THE BUG!!! FOR THIS APP TO WORK, EVENT LISTENED MUST HAVE OPTION ONCE!!!
+    // THIS ^^^ WAS THE BUG!!! FOR THIS APP TO WORK, EVENT LISTENER MUST HAVE OPTION ONCE!!!
 }
 
 function retentionTime() {
     let secondsCounter = 15;
-    // infoDisplay.innerHTML = 'Take a deep breath and hold!';
     infoDisplay.innerHTML = 'Hold your breath';
+
     const retentionInterval = setInterval(() => {
         secondsCounter--;
         numbersDisplay.innerHTML = `${secondsCounter}`;
 
         if (secondsCounter == 1) {
-            infoDisplay.innerHTML = 'Exhale and pause';
+            infoDisplay.innerHTML = 'Exhale and rest';
         }
 
         if (secondsCounter == 0) {
@@ -124,7 +112,6 @@ function retentionTime() {
 }
 
 function recoveryTime() {
-    console.log(round, settingsValues.numberOfRounds)
     if (round == settingsValues.numberOfRounds) {
         roundDisplay.innerHTML = `Breathing session over!`;
         numbersDisplay.innerHTML = ``;
@@ -136,7 +123,7 @@ function recoveryTime() {
     let secondsCounter = settingsValues.recoveryTime;
     infoDisplay.innerHTML = 'Rest and recover';
 
-    const intervalrecoveryTime = setInterval(() => {
+    const intervalRecoveryTime = setInterval(() => {
         numbersDisplay.innerHTML = `${secondsCounter}`;
         secondsCounter--;
 
@@ -145,12 +132,12 @@ function recoveryTime() {
         }
 
         if (secondsCounter == 0) {
-            clearInterval(intervalrecoveryTime);
+            clearInterval(intervalRecoveryTime);
             numbersDisplay.innerHTML = ``;
             
             setTimeout(() => {
                 startNewRound();
-            }, 500);
+            }, 1000);
         }
     }, oneSec);
 }

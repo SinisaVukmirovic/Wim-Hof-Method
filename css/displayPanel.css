@@ -1,4 +1,3 @@
-/* display panel */
 .display {
     text-align: center;
 }
@@ -22,7 +21,6 @@
     font-family: 'Russo One', sans-serif;
     font-size: 6rem;
     color: #fff;
-    /* font-weight: bold;   */
     -webkit-text-stroke: 1px var(--font-clr);
 }
 
@@ -35,8 +33,6 @@
         box-shadow: inset 0 0 3px 1px var(--bg-clr);;
         outline: none;
         border: 1px solid var(--font-clr);
-        /* border: 1rem solid #eee; */
-        /* background-color: teal; */
         position: absolute;
         transform: translateX(-50%);
         height: calc(var(--container-height) - 1rem);

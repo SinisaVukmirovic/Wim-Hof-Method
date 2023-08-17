@@ -12,7 +12,7 @@ let settingsValues = {
     recoveryTime: null
 };
 
-function getSettingsValues() {
+export default function getSettingsValues() {
     settingsValues = {
         numberOfBreaths: Number(breathsNumberInput.value),
         breathingPace: Number(breathingPaceInput.value),
@@ -22,4 +22,3 @@ function getSettingsValues() {
 }
 
 export { settingsValues };
-export default getSettingsValues;

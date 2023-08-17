@@ -18,6 +18,7 @@ indicatorSteps.forEach((inds, i = 0) => {
         li.append(step);
         indicators.append(li);
     });
+    
     formDivElems[i].append(indicators);
     i++;
 });

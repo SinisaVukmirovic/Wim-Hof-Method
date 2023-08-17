@@ -1,4 +1,3 @@
-/* settings panel */
 .settings h2 {
     font-family: 'Russo One', sans-serif;
     opacity: .7;
@@ -10,7 +9,6 @@
 .settings form {
     display: flex;
     flex-direction: column;
-    /* padding-top: 1rem; */
 
     & div:first-child {
         padding-top: 2rem;
