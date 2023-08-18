@@ -23,8 +23,8 @@ settingsForm.addEventListener('submit', e => {
     console.log(settingsValues);
 });
 
-let oneSec = 222;   //just for testing
-// let oneSec = 1000;
+// let oneSec = 222;   //just for testing
+let oneSec = 1000;
 let round = 0;
 
 startBtn.addEventListener('click', startNewRound);
